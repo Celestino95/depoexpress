@@ -1,8 +1,9 @@
 "use client"
 import { useRouter } from "next/navigation";
 const DepositForm = ({ bancoSelecionado }) => {
-  if (!bancoSelecionado) return null; // Evita erro caso esteja indefinido
   const router = useRouter();
+  if (!bancoSelecionado) return null; // Evita erro caso esteja indefinido
+ 
   return (
     <div className="flex items-center justify-center px-2">
       {/* Card Branco */}

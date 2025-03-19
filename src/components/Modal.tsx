@@ -1,19 +1,16 @@
 import { ArrowLeftCircle } from "lucide-react";
 import {
     AlertDialog,
-    AlertDialogAction,
-    AlertDialogCancel,
     AlertDialogContent,
-    AlertDialogDescription,
     AlertDialogFooter,
-    AlertDialogHeader,
-    AlertDialogTitle,
+  
   } from "@/components/ui/alert-dialog";
+import { ReactNode } from "react";
   
   interface ModalProps {
     isOpen: boolean;
     setIsOpen: (open: boolean) => void;
-    message: string;
+    content: ReactNode;
   }
   
   export default function AlertDialogDemo({ isOpen, setIsOpen, content }: ModalProps) {

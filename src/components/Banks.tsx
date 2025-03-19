@@ -8,7 +8,14 @@ const bancos = [
   { nome: "BAI", img: "/BAI.png" },
 ];
 
-const BankCarousel = ({ setBancoSelecionado }) => {
+type Banco = { nome: string; img: string };
+
+type BankCarouselProps = {
+  bancoSelecionado: Banco;
+  setBancoSelecionado: (banco: Banco) => void;
+};
+
+const BankCarousel = ({ bancoSelecionado, setBancoSelecionado }: BankCarouselProps) => {
   const [index, setIndex] = useState(1);
 
   const prevBank = () => {
@@ -41,11 +48,11 @@ const BankCarousel = ({ setBancoSelecionado }) => {
           transition={{ duration: 0.4 }}
           className="flex space-x-4 items-center"
         >
-          {bancos.map((banco, i) => (
+          {bancos.map((banco) => (
             <div
               key={banco.nome}
               className={`p-3 rounded-lg transition-all ${
-                i === index ? "bg-white shadow-lg scale-130" : "bg-white/50 scale-90"
+                banco.nome === bancoSelecionado.nome ? "bg-white shadow-lg scale-110" : "bg-white/50 scale-90"
               }`}
             >
               <img src={banco.img} alt={banco.nome} className="w-15 h-5 object-contain" />

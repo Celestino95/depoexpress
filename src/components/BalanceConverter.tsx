@@ -1,4 +1,4 @@
-import { Eye, ArrowDown, ArrowLeft } from "lucide-react";
+import { Eye, ArrowDown} from "lucide-react";
 
 const BalanceConverter = () => {
   return (

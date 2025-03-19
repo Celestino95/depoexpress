@@ -1,5 +1,5 @@
+"use client"
 import { useState, useEffect } from "react";
-
 const ProgressBar = ({ onComplete }: { onComplete: () => void }) => {
   const [progress, setProgress] = useState(0);
 
