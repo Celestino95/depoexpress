@@ -1,6 +1,9 @@
 "use client"
 import { useRouter } from "next/navigation";
 const DepositForm = ({ bancoSelecionado }) => {
+
+  {bancoSelecionado && <DepositForm bancoSelecionado={bancoSelecionado} />}
+
   const router = useRouter();
   if (!bancoSelecionado) return null; // Evita erro caso esteja indefinido
  
@@ -11,7 +14,7 @@ const DepositForm = ({ bancoSelecionado }) => {
         
         {/* Logo do Banco */}
         <div className="flex justify-center mb-2">
-          <img src={bancoSelecionado.img} alt={bancoSelecionado.nome} className="w-100 h-15 rounded-xl shadow-md" />
+          <img src={bancoSelecionado?.img} alt={bancoSelecionado?.nome} className="w-100 h-15 rounded-xl shadow-md" />
         </div>
 
         {/* Campos do Formulário */}
@@ -48,7 +51,7 @@ const DepositForm = ({ bancoSelecionado }) => {
           </div>
 
           {/* Botão Confirmar */}
-          <button onClick={()=> router.push("/loading/") } className="w-full bg-[#FF1A5B] text-white font-bold py-3 rounded-md shadow-md hover:bg-[#E6004C] transition">
+          <button onClick={(e)=>{ e.preventDefault(); router.push("/loading/") }} className="w-full bg-[#FF1A5B] text-white font-bold py-3 rounded-md shadow-md hover:bg-[#E6004C] transition">
             CONFIRMAR
           </button>
         </form>

@@ -13,7 +13,7 @@ const bancos = [
 
 export default function Deposit(){
 
-    const [bancoSelecionado, setBancoSelecionado] = useState(bancos[0]); // Estado inicial
+    const [bancoSelecionado, setBancoSelecionado] = useState(bancos.length > 0 ? bancos[0]: null); // Estado inicial
     const router = useRouter();
     
     return(

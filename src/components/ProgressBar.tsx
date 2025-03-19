@@ -1,5 +1,6 @@
-"use client"
+"use client";
 import { useState, useEffect } from "react";
+
 const ProgressBar = ({ onComplete }: { onComplete: () => void }) => {
   const [progress, setProgress] = useState(0);
 
@@ -8,7 +9,6 @@ const ProgressBar = ({ onComplete }: { onComplete: () => void }) => {
       setProgress((oldProgress) => {
         if (oldProgress >= 100) {
           clearInterval(interval);
-          onComplete(); // Chama a função quando atinge 100%
           return 100;
         }
         return oldProgress + 1; // Aumenta 1% a cada intervalo
@@ -16,7 +16,14 @@ const ProgressBar = ({ onComplete }: { onComplete: () => void }) => {
     }, 160); // Tempo entre cada incremento
 
     return () => clearInterval(interval);
-  }, [onComplete]);
+  }, []);
+
+  // 🚀 Chama onComplete apenas quando progress atinge 100%
+  useEffect(() => {
+    if (progress === 100) {
+      setTimeout(onComplete, 0);
+    }
+  }, [progress, onComplete]);
 
   return (
     <div className="w-50 max-w-sm h-2 bg-gray-200 rounded-full overflow-hidden">
